@@ -1,1 +1,254 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CityLonBD - Loan CityBD</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #123c69;
+      color: white;
+      padding: 18px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 27px;
+    }
+
+    header p {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .notice {
+      background: #fff3cd;
+      color: #664d03;
+      padding: 12px 18px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .hero {
+      background: white;
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      color: #123c69;
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #5c6675;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      color: #123c69;
+      margin-bottom: 20px;
+      font-size: 21px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd3dd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #123c69;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0d2d4e;
+    }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      background: #eef6ff;
+      border-radius: 10px;
+      line-height: 1.9;
+    }
+
+    .features {
+      display: grid;
+      gap: 12px;
+    }
+
+    .feature {
+      padding: 15px;
+      background: #f4f7fb;
+      border-radius: 9px;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 25px;
+      text-align: center;
+      background: #123c69;
+      color: white;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>CityLonBD</h1>
+    <p>Online Loan Demo Website</p>
+  </header>
+
+  <div class="notice">
+    ⚠️ এটি একটি ডেমো ওয়েবসাইট। এটি কোনো বাস্তব ব্যাংক বা ঋণদাতা প্রতিষ্ঠান নয়।
+  </div>
+
+  <section class="hero">
+    <h2>Loan Calculator</h2>
+    <p>
+      আপনার সম্ভাব্য মাসিক কিস্তির একটি আনুমানিক হিসাব করুন।
+    </p>
+  </section>
+
+  <div class="container">
+
+    <div class="card">
+      <h3>💰 কিস্তি হিসাব করুন</h3>
+
+      <label>ঋণের পরিমাণ (৳)</label>
+      <input type="number" id="amount" placeholder="যেমন: 100000">
+
+      <label>বার্ষিক সুদের হার (%)</label>
+      <input type="number" id="rate" placeholder="যেমন: 10">
+
+      <label>মেয়াদ (মাস)</label>
+      <input type="number" id="months" placeholder="যেমন: 12">
+
+      <button onclick="calculateLoan()">
+        কিস্তি হিসাব করুন
+      </button>
+
+      <div class="result" id="result">
+        <strong>ফলাফল:</strong><br>
+        মাসিক কিস্তি: <b id="monthly"></b><br>
+        মোট পরিশোধ: <b id="total"></b><br>
+        মোট সুদ: <b id="interest"></b>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📋 আমাদের ডেমো সুবিধা</h3>
+
+      <div class="features">
+        <div class="feature">💰 সহজ Loan Calculator</div>
+        <div class="feature">📱 মোবাইল ফ্রেন্ডলি ডিজাইন</div>
+        <div class="feature">⚡ দ্রুত হিসাব</div>
+        <div class="feature">🔒 কোনো ব্যক্তিগত তথ্য সংরক্ষণ করে না</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <strong>CityLonBD</strong><br>
+    এটি একটি শিক্ষামূলক ডেমো ওয়েবসাইট।<br>
+    কোনো বাস্তব ঋণ বা ব্যাংকিং সেবা এখানে প্রদান করা হয় না।
+  </footer>
+
+  <script>
+    function calculateLoan() {
+
+      let amount = Number(document.getElementById("amount").value);
+      let annualRate = Number(document.getElementById("rate").value);
+      let months = Number(document.getElementById("months").value);
+
+      if (amount <= 0 || annualRate < 0 || months <= 0) {
+        alert("দয়া করে সঠিক তথ্য দিন।");
+        return;
+      }
+
+      let monthlyRate = annualRate / 100 / 12;
+
+      let monthlyPayment;
+
+      if (monthlyRate === 0) {
+        monthlyPayment = amount / months;
+      } else {
+        monthlyPayment =
+          amount *
+          monthlyRate *
+          Math.pow(1 + monthlyRate, months) /
+          (Math.pow(1 + monthlyRate, months) - 1);
+      }
+
+      let totalPayment = monthlyPayment * months;
+      let totalInterest = totalPayment - amount;
+
+      document.getElementById("monthly").innerText =
+        "৳ " + monthlyPayment.toFixed(2);
+
+      document.getElementById("total").innerText =
+        "৳ " + totalPayment.toFixed(2);
+
+      document.getElementById("interest").innerText =
+        "৳ " + totalInterest.toFixed(2);
+
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+
+</body>
+  </html>
