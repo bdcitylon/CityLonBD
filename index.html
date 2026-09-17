@@ -1,254 +1,1172 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CityLonBD - Loan CityBD</title>
+<title>CityLonBD | Online Loan Service</title>
+<meta name="description" content="CityLonBD - সহজ ও স্বচ্ছ অনলাইন ঋণ তথ্য ও যোগাযোগ প্ল্যাটফর্ম।">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+}
 
-    body {
-      background: #f4f7fb;
-      color: #172033;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    header {
-      background: #123c69;
-      color: white;
-      padding: 18px 20px;
-      text-align: center;
-    }
+body{
+  background:#f5f8fc;
+  color:#172033;
+  line-height:1.6;
+}
 
-    header h1 {
-      font-size: 27px;
-    }
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
-    header p {
-      margin-top: 5px;
-      font-size: 14px;
-    }
+.container{
+  width:92%;
+  max-width:1150px;
+  margin:auto;
+}
 
-    .notice {
-      background: #fff3cd;
-      color: #664d03;
-      padding: 12px 18px;
-      text-align: center;
-      font-size: 13px;
-    }
+/* HEADER */
+header{
+  background:#ffffff;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 15px rgba(0,0,0,.07);
+}
 
-    .hero {
-      background: white;
-      padding: 35px 20px;
-      text-align: center;
-    }
+.nav{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
 
-    .hero h2 {
-      color: #123c69;
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:23px;
+  font-weight:800;
+  color:#0757d5;
+}
 
-    .hero p {
-      color: #5c6675;
-      line-height: 1.6;
-    }
+.logo-icon{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#0757d5,#00a6ff);
+  color:#fff;
+  font-weight:900;
+}
 
-    .container {
-      max-width: 600px;
-      margin: 25px auto;
-      padding: 0 15px;
-    }
+nav{
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
 
-    .card {
-      background: white;
-      border-radius: 15px;
-      padding: 25px;
-      margin-bottom: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
+nav a{
+  font-size:15px;
+  font-weight:600;
+  color:#39445a;
+}
 
-    .card h3 {
-      color: #123c69;
-      margin-bottom: 20px;
-      font-size: 21px;
-    }
+nav a:hover{
+  color:#0757d5;
+}
 
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 7px;
-      font-weight: bold;
-    }
+.nav-btn{
+  background:#0757d5;
+  color:white!important;
+  padding:11px 18px;
+  border-radius:9px;
+}
 
-    input {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #ccd3dd;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#061c46,#0757d5);
+  color:white;
+  padding:75px 0;
+  overflow:hidden;
+}
 
-    button {
-      width: 100%;
-      margin-top: 20px;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #123c69;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:45px;
+  align-items:center;
+}
 
-    button:hover {
-      background: #0d2d4e;
-    }
+.badge{
+  display:inline-block;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.22);
+  padding:8px 14px;
+  border-radius:30px;
+  font-size:14px;
+  margin-bottom:18px;
+}
 
-    .result {
-      display: none;
-      margin-top: 20px;
-      padding: 18px;
-      background: #eef6ff;
-      border-radius: 10px;
-      line-height: 1.9;
-    }
+.hero h1{
+  font-size:48px;
+  line-height:1.15;
+  margin-bottom:18px;
+}
 
-    .features {
-      display: grid;
-      gap: 12px;
-    }
+.hero h1 span{
+  color:#7ee8ff;
+}
 
-    .feature {
-      padding: 15px;
-      background: #f4f7fb;
-      border-radius: 9px;
-    }
+.hero p{
+  font-size:18px;
+  color:#e3efff;
+  max-width:620px;
+  margin-bottom:28px;
+}
 
-    footer {
-      margin-top: 30px;
-      padding: 25px;
-      text-align: center;
-      background: #123c69;
-      color: white;
-      font-size: 13px;
-      line-height: 1.7;
-    }
-  </style>
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 22px;
+  border-radius:10px;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+}
+
+.btn-primary{
+  background:white;
+  color:#0757d5;
+}
+
+.btn-outline{
+  border:1px solid rgba(255,255,255,.5);
+  color:white;
+  background:transparent;
+}
+
+/* LOAN CARD */
+.loan-preview{
+  background:white;
+  color:#172033;
+  border-radius:22px;
+  padding:27px;
+  box-shadow:0 20px 50px rgba(0,0,0,.18);
+}
+
+.loan-preview-top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:22px;
+}
+
+.loan-preview h3{
+  font-size:18px;
+}
+
+.amount{
+  font-size:35px;
+  font-weight:800;
+  color:#0757d5;
+  margin:10px 0;
+}
+
+.preview-row{
+  display:flex;
+  justify-content:space-between;
+  padding:13px 0;
+  border-bottom:1px solid #edf0f5;
+}
+
+.preview-row:last-child{
+  border-bottom:0;
+}
+
+/* SECTION */
+section{
+  padding:75px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.section-title h2{
+  font-size:34px;
+  margin-bottom:9px;
+}
+
+.section-title p{
+  color:#69758a;
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.card{
+  background:white;
+  border-radius:17px;
+  padding:27px;
+  box-shadow:0 8px 30px rgba(24,45,75,.07);
+  border:1px solid #edf1f7;
+}
+
+.card-icon{
+  width:50px;
+  height:50px;
+  border-radius:13px;
+  background:#eaf3ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#0757d5;
+  font-size:23px;
+  margin-bottom:18px;
+}
+
+.card h3{
+  margin-bottom:9px;
+}
+
+.card p{
+  color:#687489;
+  font-size:15px;
+}
+
+/* PLANS */
+.plans{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.plan{
+  background:white;
+  border-radius:18px;
+  padding:27px;
+  border:1px solid #e7edf6;
+  position:relative;
+}
+
+.plan.featured{
+  border:2px solid #0757d5;
+}
+
+.plan-tag{
+  position:absolute;
+  top:16px;
+  right:16px;
+  background:#e8f2ff;
+  color:#0757d5;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.plan h3{
+  font-size:21px;
+}
+
+.plan-amount{
+  font-size:31px;
+  font-weight:800;
+  color:#0757d5;
+  margin:13px 0;
+}
+
+.plan ul{
+  list-style:none;
+  margin-top:18px;
+}
+
+.plan li{
+  padding:8px 0;
+  color:#5e6a7f;
+}
+
+/* CALCULATOR */
+.calculator{
+  background:white;
+  border-radius:22px;
+  padding:35px;
+  box-shadow:0 10px 35px rgba(20,40,70,.08);
+  max-width:850px;
+  margin:auto;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.field{
+  margin-bottom:18px;
+}
+
+.field label{
+  display:block;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  padding:14px;
+  border:1px solid #dce3ee;
+  border-radius:9px;
+  outline:none;
+  font-size:15px;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:#0757d5;
+}
+
+.result{
+  margin-top:22px;
+  padding:22px;
+  border-radius:13px;
+  background:#eef6ff;
+  text-align:center;
+}
+
+.result strong{
+  display:block;
+  font-size:32px;
+  color:#0757d5;
+}
+
+/* ELIGIBILITY */
+.eligibility{
+  background:#071d43;
+  color:white;
+}
+
+.eligibility .section-title p{
+  color:#c8d7ee;
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.step{
+  text-align:center;
+}
+
+.step-number{
+  width:52px;
+  height:52px;
+  margin:0 auto 14px;
+  border-radius:50%;
+  background:#0757d5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:19px;
+}
+
+.step p{
+  color:#c9d5e8;
+  font-size:14px;
+}
+
+/* APPLICATION */
+.application{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:30px;
+  align-items:start;
+}
+
+.info-box{
+  background:#0757d5;
+  color:white;
+  border-radius:20px;
+  padding:30px;
+}
+
+.info-box h2{
+  font-size:30px;
+  margin-bottom:15px;
+}
+
+.info-box p{
+  color:#e1edff;
+}
+
+.contact-item{
+  margin-top:22px;
+  padding-top:17px;
+  border-top:1px solid rgba(255,255,255,.2);
+}
+
+/* FAQ */
+.faq{
+  max-width:850px;
+  margin:auto;
+}
+
+details{
+  background:white;
+  margin-bottom:12px;
+  border-radius:12px;
+  padding:18px 20px;
+  box-shadow:0 4px 18px rgba(20,40,70,.05);
+}
+
+summary{
+  cursor:pointer;
+  font-weight:700;
+}
+
+/* CONTACT */
+.contact-links{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.contact-btn{
+  padding:15px 24px;
+  border-radius:10px;
+  font-weight:700;
+  color:white;
+}
+
+.whatsapp{
+  background:#159447;
+}
+
+.telegram{
+  background:#168bd0;
+}
+
+/* FOOTER */
+footer{
+  background:#07152f;
+  color:#c4d0e2;
+  padding:45px 0 25px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:30px;
+}
+
+footer h3{
+  color:white;
+  margin-bottom:12px;
+}
+
+footer a{
+  display:block;
+  margin:8px 0;
+}
+
+.footer-bottom{
+  margin-top:30px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.1);
+  text-align:center;
+  font-size:13px;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+  nav{
+    display:none;
+  }
+
+  .hero{
+    padding:55px 0;
+  }
+
+  .hero-grid,
+  .application{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
+
+  .cards,
+  .plans{
+    grid-template-columns:1fr;
+  }
+
+  .steps{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:480px){
+  .container{
+    width:94%;
+  }
+
+  .hero h1{
+    font-size:31px;
+  }
+
+  .section-title h2{
+    font-size:28px;
+  }
+
+  .calculator{
+    padding:22px;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>CityLonBD</h1>
-    <p>Online Loan Demo Website</p>
-  </header>
+<!-- HEADER -->
+<header>
+  <div class="container nav">
 
-  <div class="notice">
-    ⚠️ এটি একটি ডেমো ওয়েবসাইট। এটি কোনো বাস্তব ব্যাংক বা ঋণদাতা প্রতিষ্ঠান নয়।
+    <a href="#" class="logo">
+      <span class="logo-icon">C</span>
+      CityLonBD
+    </a>
+
+    <nav>
+      <a href="#plans">লোন প্ল্যান</a>
+      <a href="#calculator">ক্যালকুলেটর</a>
+      <a href="#eligibility">যোগ্যতা</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-btn">যোগাযোগ</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="container hero-grid">
+
+    <div>
+
+      <span class="badge">সহজ অনলাইন ঋণ তথ্য ও যোগাযোগ</span>
+
+      <h1>
+        আপনার প্রয়োজনের জন্য
+        <span>৳৩০,০০০ পর্যন্ত</span>
+        ঋণ সুবিধা
+      </h1>
+
+      <p>
+        CityLonBD-এর মাধ্যমে ঋণের পরিমাণ, মেয়াদ ও আনুমানিক কিস্তি
+        সম্পর্কে সহজে তথ্য দেখুন এবং আমাদের সাথে সরাসরি যোগাযোগ করুন।
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#calculator" class="btn btn-primary">
+          কিস্তি হিসাব করুন
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+          যোগাযোগ করুন
+        </a>
+      </div>
+
+    </div>
+
+
+    <div class="loan-preview">
+
+      <div class="loan-preview-top">
+        <h3>ঋণ সুবিধা</h3>
+        <span>CityLonBD</span>
+      </div>
+
+      <div>সর্বোচ্চ ঋণ সীমা</div>
+
+      <div class="amount">৳৩০,০০০</div>
+
+      <div class="preview-row">
+        <span>সহজ আবেদন</span>
+        <strong>✓</strong>
+      </div>
+
+      <div class="preview-row">
+        <span>অনলাইন যোগাযোগ</span>
+        <strong>✓</strong>
+      </div>
+
+      <div class="preview-row">
+        <span>শর্ত প্রযোজ্য</span>
+        <strong>✓</strong>
+      </div>
+
+    </div>
+
   </div>
 
-  <section class="hero">
-    <h2>Loan Calculator</h2>
-    <p>
-      আপনার সম্ভাব্য মাসিক কিস্তির একটি আনুমানিক হিসাব করুন।
-    </p>
-  </section>
+</section>
+
+
+<!-- FEATURES -->
+<section>
 
   <div class="container">
 
-    <div class="card">
-      <h3>💰 কিস্তি হিসাব করুন</h3>
-
-      <label>ঋণের পরিমাণ (৳)</label>
-      <input type="number" id="amount" placeholder="যেমন: 100000">
-
-      <label>বার্ষিক সুদের হার (%)</label>
-      <input type="number" id="rate" placeholder="যেমন: 10">
-
-      <label>মেয়াদ (মাস)</label>
-      <input type="number" id="months" placeholder="যেমন: 12">
-
-      <button onclick="calculateLoan()">
-        কিস্তি হিসাব করুন
-      </button>
-
-      <div class="result" id="result">
-        <strong>ফলাফল:</strong><br>
-        মাসিক কিস্তি: <b id="monthly"></b><br>
-        মোট পরিশোধ: <b id="total"></b><br>
-        মোট সুদ: <b id="interest"></b>
-      </div>
+    <div class="section-title">
+      <h2>কেন CityLonBD?</h2>
+      <p>সহজভাবে প্রয়োজনীয় ঋণ তথ্য খুঁজে পাওয়ার জন্য তৈরি একটি আধুনিক প্ল্যাটফর্ম।</p>
     </div>
 
-    <div class="card">
-      <h3>📋 আমাদের ডেমো সুবিধা</h3>
+    <div class="cards">
 
-      <div class="features">
-        <div class="feature">💰 সহজ Loan Calculator</div>
-        <div class="feature">📱 মোবাইল ফ্রেন্ডলি ডিজাইন</div>
-        <div class="feature">⚡ দ্রুত হিসাব</div>
-        <div class="feature">🔒 কোনো ব্যক্তিগত তথ্য সংরক্ষণ করে না</div>
+      <div class="card">
+        <div class="card-icon">৳</div>
+        <h3>সহজ হিসাব</h3>
+        <p>
+          ঋণের পরিমাণ ও মেয়াদ অনুযায়ী আনুমানিক মাসি7ক কিস্তি হিসাব করতে পারবেন।
+        </p>
       </div>
+
+      <div class="card">
+        <div class="card-icon">✓</div>
+        <h3>স্বচ্ছ তথ্য</h3>
+        <p>
+          ঋণের শর্ত, মেয়াদ ও সম্ভাব্য খরচ সম্পর্কে আগে থেকেই তথ্য দেখুন।
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">☎</div>
+        <h3>সরাসরি যোগাযোগ</h3>
+        <p>
+          WhatsApp বা Telegram-এর মাধ্যমে সরাসরি যোগাযোগের ব্যবস্থা রাখা হয়েছে।
+        </p>
+      </div>
+
     </div>
 
   </div>
 
-  <footer>
-    <strong>CityLonBD</strong><br>
-    এটি একটি শিক্ষামূলক ডেমো ওয়েবসাইট।<br>
-    কোনো বাস্তব ঋণ বা ব্যাংকিং সেবা এখানে প্রদান করা হয় না।
-  </footer>
+</section>
 
-  <script>
-    function calculateLoan() {
 
-      let amount = Number(document.getElementById("amount").value);
-      let annualRate = Number(document.getElementById("rate").value);
-      let months = Number(document.getElementById("months").value);
+<!-- PLANS -->
+<section id="plans">
 
-      if (amount <= 0 || annualRate < 0 || months <= 0) {
-        alert("দয়া করে সঠিক তথ্য দিন।");
-        return;
-      }
+  <div class="container">
 
-      let monthlyRate = annualRate / 100 / 12;
+    <div class="section-title">
+      <h2>ঋণ পরিকল্পনা</h2>
+      <p>আপনার প্রয়োজন অনুযায়ী সম্ভাব্য ঋণের পরিমাণ নির্বাচন করুন।</p>
+    </div>
 
-      let monthlyPayment;
+    <div class="plans">
 
-      if (monthlyRate === 0) {
-        monthlyPayment = amount / months;
-      } else {
-        monthlyPayment =
-          amount *
-          monthlyRate *
-          Math.pow(1 + monthlyRate, months) /
-          (Math.pow(1 + monthlyRate, months) - 1);
-      }
+      <div class="plan">
+        <h3>Starter</h3>
+        <div class="plan-amount">৳৫,০০০</div>
+        <p>স্বল্প পরিমাণ অর্থের প্রয়োজন হলে।</p>
 
-      let totalPayment = monthlyPayment * months;
-      let totalInterest = totalPayment - amount;
+        <ul>
+          <li>✓ ঋণ তথ্য</li>
+          <li>✓ মেয়াদ নির্বাচন</li>
+          <li>✓ কিস্তি হিসাব</li>
+          <li>✓ অনলাইন যোগাযোগ</li>
+        </ul>
+      </div>
 
-      document.getElementById("monthly").innerText =
-        "৳ " + monthlyPayment.toFixed(2);
 
-      document.getElementById("total").innerText =
-        "৳ " + totalPayment.toFixed(2);
+      <div class="plan featured">
 
-      document.getElementById("interest").innerText =
-        "৳ " + totalInterest.toFixed(2);
+        <span class="plan-tag">জনপ্রিয়</span>
 
-      document.getElementById("result").style.display = "block";
-    }
-  </script>
+        <h3>Standard</h3>
+        <div class="plan-amount">৳১০,০০০</div>
+        <p>দৈনন্দিন প্রয়োজনের জন্য একটি সম্ভাব্য পরিকল্পনা।</p>
+
+        <ul>
+          <li>✓ ঋণ তথ্য</li>
+          <li>✓ মেয়াদ নির্বাচন</li>
+          <li>✓ কিস্তি হিসাব</li>
+          <li>✓ অনলাইন যোগাযোগ</li>
+        </ul>
+
+      </div>
+
+
+      <div class="plan">
+        <h3>Premium</h3>
+        <div class="plan-amount">৳৩০,০০০</div>
+        <p>বেশি অর্থের প্রয়োজন হলে সর্বোচ্চ সীমার পরিকল্পনা।</p>
+
+        <ul>
+          <li>✓ ঋণ তথ্য</li>
+          <li>✓ মেয়াদ নির্বাচন</li>
+          <li>✓ কিস্তি হিসাব</li>
+          <li>✓ অনলাইন যোগাযোগ</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CALCULATOR -->
+<section id="calculator">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>লোন ক্যালকুলেটর</h2>
+      <p>ঋণের পরিমাণ ও মেয়াদ দিয়ে আনুমানিক মাসিক কিস্তি দেখুন।</p>
+    </div>
+
+
+    <div class="calculator">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label>ঋণের পরিমাণ</label>
+
+          <input
+            type="number"
+            id="loanAmount"
+            value="10000"
+            min="1000"
+            max="30000"
+            step="500"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>মেয়াদ</label>
+
+          <select id="loanTerm">
+            <option value="3">৩ মাস</option>
+            <option value="6" selected>৬ মাস</option>
+            <option value="9">৯ মাস</option>
+            <option value="12">১২ মাস</option>
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="result">
+
+        <div>আনুমানিক মাসিক কিস্তি</div>
+
+        <strong id="monthlyPayment">৳১,৬৬৭</strong>
+
+        <small>
+          এটি একটি আনুমানিক হিসাব। প্রকৃত কিস্তি প্রযোজ্য শর্ত ও ফি অনুযায়ী পরিবর্তিত হতে পারে।
+        </small>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ELIGIBILITY -->
+<section class="eligibility" id="eligibility">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>কীভাবে এগোবেন?</h2>
+      <p>প্রথমে তথ্য দেখুন, তারপর যোগাযোগ করুন।</p>
+    </div>
+
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">১</div>
+        <h3>পরিমাণ নির্বাচন</h3>
+        <p>আপনার প্রয়োজন অনুযায়ী ঋণের পরিমাণ নির্বাচন করুন।</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">২</div>
+        <h3>তথ্য যাচাই</h3>
+        <p>প্রযোজ্য যোগ্যতা ও শর্ত সম্পর্কে তথ্য নিন।</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">৩</div>
+        <h3>যোগাযোগ</h3>
+        <p>WhatsApp অথবা Telegram-এর মাধ্যমে যোগাযোগ করুন।</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">৪</div>
+        <h3>পরবর্তী ধাপ</h3>
+        <p>যোগ্যতা ও শর্ত অনুযায়ী পরবর্তী প্রক্রিয়া জানুন।</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- APPLICATION -->
+<section>
+
+  <div class="container application">
+
+    <div class="info-box">
+
+      <h2>ঋণ সম্পর্কে জানতে চান?</h2>
+
+      <p>
+        আপনার প্রয়োজনীয় ঋণের পরিমাণ ও উদ্দেশ্য জানিয়ে আমাদের সাথে
+        সরাসরি যোগাযোগ করুন।
+      </p>
+
+      <div class="contact-item">
+        <strong>WhatsApp</strong>
+        <br>
+        দ্রুত যোগাযোগের জন্য WhatsApp ব্যবহার করুন।
+      </div>
+
+      <div class="contact-item">
+        <strong>Telegram</strong>
+        <br>
+        Telegram-এর মাধ্যমেও যোগাযোগ করা যাবে।
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2 style="margin-bottom:20px;">যোগাযোগের তথ্য</h2>
+
+      <div class="field">
+        <label>আপনার নাম</label>
+        <input type="text" id="name" placeholder="নাম লিখুন">
+      </div>
+
+      <div class="field">
+        <label>মোবাইল নম্বর</label>
+        <input type="tel" id="phone" placeholder="01XXXXXXXXX">
+      </div>
+
+      <div class="field">
+        <label>কত টাকা প্রয়োজন?</label>
+        <input type="number" id="requested" placeholder="যেমন: 10000">
+      </div>
+
+      <div class="field">
+        <label>প্রয়োজনের উদ্দেশ্য</label>
+        <textarea id="purpose" rows="4" placeholder="সংক্ষেপে লিখুন"></textarea>
+      </div>
+
+      <button class="btn" style="background:#0757d5;color:white;width:100%;" onclick="contactMessage()">
+        WhatsApp-এ যোগাযোগ করুন
+      </button>
+
+      <p style="font-size:12px;color:#778399;margin-top:12px;">
+        গুরুত্বপূর্ণ: এই ফর্ম কোনো ব্যাংক/ঋণদাতার কাছে স্বয়ংক্রিয় আবেদন জমা করে না।
+        কোনো অজানা ব্যক্তি বা নম্বরে অগ্রিম টাকা পাঠাবেন না।
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FAQ -->
+<section id="faq">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>সাধারণ প্রশ্ন</h2>
+      <p>ঋণ নেওয়ার আগে প্রয়োজনীয় বিষয়গুলো জেনে নিন।</p>
+    </div>
+
+
+    <div class="faq">
+
+      <details>
+        <summary>সর্বোচ্চ কত টাকা ঋণ নেওয়া যাবে?</summary>
+        <p>
+          এই ওয়েবসাইটের প্রদর্শিত সর্বোচ্চ সীমা ৳৩০,০০০।
+          প্রকৃত ঋণসীমা প্রযোজ্য যোগ্যতা ও শর্তের ওপর নির্ভর করবে।
+        </p>
+      </details>
+
+
+      <details>
+        <summary>কিস্তি কীভাবে হিসাব করা হয়?</summary>
+        <p>
+          উপরের ক্যালকুলেটরে ঋণের পরিমাণ ও মেয়াদ দিলে আনুমানিক মাসিক
+          কিস্তি দেখানো হয়।
+        </p>
+      </details>
+
+
+      <details>
+        <summary>ঋণ পাওয়ার জন্য জামানত দেওয়ার আগে আমাদের whatsapp যোগাযোগ করুন ধন্যবাদ ?</summary>
+        <p>
+          কোনো অজানা ব্যক্তি বা ব্যক্তিগত নম্বরে ঋণ পাওয়ার আগে
+          অগ্রিম টাকা পাঠাবেন না। প্রকৃত ফি বা চার্জ থাকলে তার
+          লিখিত শর্ত আগে যাচাই করুন।
+        </p>
+      </details>
+
+
+      <details>
+        <summary>যোগাযোগ কোথায় করব?</summary>
+        <p>
+          WhatsApp অথবা Telegram-এর মাধ্যমে যোগাযোগ করতে পারবেন।
+        </p>
+      </details>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- c@cityLonBD
+<section id="contact">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>আমাদের সাথে যোগাযোগ করুন</h2>
+      <p>আপনার প্রয়োজন সম্পর্কে জানাতে সরাসরি যোগাযোগ করুন।</p>
+    </div>
+
+
+    <div class="contact-links">
+
+      <!-- নিচের নম্বরটি নিজের WhatsApp নম্বর দিয়ে পরিবর্তন করুন -->
+      <a
+        class="contact-btn whatsapp"
+        href="https://wa.me/8801740337521"
+        target="_blank"
+      >
+        WhatsApp
+      </a>
+
+
+      <!-- নিচের username নিজের Telegram username দিয়ে পরিবর্তন করুন -->
+      <a
+        class="contact-btn telegram"
+        href="https://t.me/YOURYOUREGRAM_USERUSERNAME-@cityLonBD    target="_blank"
+      >
+        Telegram
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <h3>CityLonBD</h3>
+        <p>
+          সহজ ঋণ তথ্য, ক্যালকুলেশন ও যোগাযোগের জন্য একটি আধুনিক
+          অনলাইন প্ল্যাটফর্ম।
+        </p>
+      </div>
+
+      <div>
+        <h3>দ্রুত লিংক</h3>
+        <a href="#plans">ঋণ পরিকল্পনা</a>
+        <a href="#calculator">ক্যালকুলেটর</a>
+        <a href="#eligibility">যোগ্যতা</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div>
+        <h3>যোগাযোগ</h3>
+        <a href="#contact">WhatsApp</a>
+        <a href="#contact">Telegram</a>
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+      © 2026 CityLonBD. All rights reserved.
+      <br>
+      ঋণ অনুমোদন প্রযোজ্য যোগ্যতা, যাচাই ও শর্তের ওপর নির্ভরশীল।
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+/* LOAN CALCULATOR */
+
+function calculateLoan(){
+
+  const amount =
+    Number(document.getElementById("loanAmount").value);
+
+  const months =
+    Number(document.getElementById("loanTerm").value);
+
+  if(!amount || !months){
+    return;
+  }
+
+  /*
+    এখানে 0% হিসাব দেখানো হচ্ছে।
+    প্রকৃত সুদ/ফি থাকলে সঠিক প্রকাশিত হার অনুযায়ী
+    এই formula পরিবর্তন করতে হবে।
+  */
+
+  const payment = amount / months;
+
+  document.getElementById("monthlyPayment").innerText =
+    "৳" + Math.round(payment).toLocaleString("bn-BD");
+
+}
+
+document.getElementById("loanAmount")
+.addEventListener("input", calculateLoan);
+
+document.getElementById("loanTerm")
+.addEventListener("change", calculateLoan);
+
+calculateLoan();
+
+
+/* WHATSAPP CONTACT */
+
+function contactMessage(){
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const amount =
+    document.getElementById("requested").value.trim();
+
+  const purpose =
+    document.getElementById("purpose").value.trim();
+
+
+  if(!name || !phone || !amount){
+
+    alert("দয়া করে নাম, মোবাইল নম্বর এবং প্রয়োজনীয় ঋণের পরিমাণ লিখুন।");
+
+    return;
+  }
+
+
+  /*
+    নিজের WhatsApp নম্বর এখানে বসান।
+    উদাহরণ:
+    0101.......
+  */
+
+  const whatsappNumber 
+
+
+  const message =
+    "CityLonBD যোগাযোগ%0A%0A" +
+    "নাম: " + encodeURIComponent(name) + "%0A" + bank officer 
+    "মোবাইল: " + encodeURIComponent(phone) + "%0A" +
+    "প্রয়োজনীয় ঋণ: ৳" + encodeURIComponent(amount) + "%0A" +
+    "উদ্দেশ্য: " + encodeURIComponent(purpose);
+
+
+  window.open(
+    "https://wa.me/" + whatsappNumber + "?text=" + message,
+    "_blank"
+  );
+
+}
+
+</script>
 
 </body>
-  </html>
+  </html>>
